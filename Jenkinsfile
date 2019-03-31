@@ -46,9 +46,22 @@ stages{
         steps{
             sh '''
             echo "Setting up Docker registry using ansible playbook"
-            ls -l 
+            cd docker_registry
+            docker run --entrypoint htpasswd registry:2 -Bbn ${REGISTRY_USER} ${REGISTRY_PWD} > roles/provision/files/htpasswd
+            ansible-playbook -i hosts provision.yml -u ${REGISTRY_USER} --connection=local
+            ansible-playbook -i hosts deploy.yml -u ${REGISTRY_USER} --connection=local
             '''   
         }
       }
+    stage('Build Docker images'){
+        steps{
+            sh '''
+            echo "Build Sample Nginx webserver image"
+            cd nginx
+            docker login --username ${REGISTRY_USER} --password ${REGISTRY_PWD} ${DOCKER_REGISTRY_URL}
+            docker build --force-rm -t ${IMAGE_NAME}:${BUILD_NUMBER} .
+            docker tag ${IMAGE_NAME}:${BUILD_NUMBER} ${DOCKER_REGISTRY_URL}/${IMAGE_NAME}:${BUILD_NUMBER}
+            docker push ${DOCKER_REGISTRY_URL}/${IMAGE_NAME}:${BUILD_NUMBER}
+            '''   
     }
 }
