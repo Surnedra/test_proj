@@ -44,13 +44,10 @@ stages{
 
     stage('Setup Docker Registry'){
         steps{
-            dir('workdir') {
-                sh '''
+            sh '''
             echo "Setting up Docker registry using ansible playbook"
             ls -l 
-            '''
-            }
-            
+            '''   
         }
       }
     }
