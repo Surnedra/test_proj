@@ -47,7 +47,7 @@ stages{
         steps{
             sh '''
             echo "Setting up Docker registry using ansible playbook"
-            cd ${env.BASE_DIR}/
+            ls -l ${env.WORKDIR}
             '''
         }
       }
