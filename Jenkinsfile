@@ -50,7 +50,7 @@ stages{
             echo "Setting up Docker registry using ansible playbook"
             cd docker_registry
             docker run --entrypoint htpasswd registry:2 -Bbn $REGISTRY_USER $REGISTRY_PWD > roles/provision/files/htpasswd
-            ansible-playbook -i hosts provision.yml --connection=local
+            ansible-playbook -i hosts provision.yml -u $REGISTRY_USER --connection=local --extra-vars "ansible_sudo_pass=$REGISTRY_PWD"
             ansible-playbook -i hosts deploy.yml --connection=local
             '''   
         }
