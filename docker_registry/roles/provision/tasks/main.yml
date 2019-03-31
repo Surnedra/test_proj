@@ -6,6 +6,7 @@
 # https://github.com/docker/docker/issues/15498
 - name: Install docker selinux
   yum: name=docker-selinux state=present
+  sudo: true
 
 #- name: Install docker
 #  shell: curl -sSL https://get.docker.com/ | sh
