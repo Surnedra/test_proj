@@ -1,0 +1,24 @@
+---
+- name: Check if container is running
+  sudo: true
+  shell: docker ps
+  register: containers
+
+- name: Stop running container
+  sudo: true
+  shell: "{{ item }}"
+  with_items:
+    - docker stop {{ registry_container_name }}
+    - docker rm {{ registry_container_name }}
+  when: containers.stdout.find(registry_container_name) != -1
+
+- name: Deploy registry
+  sudo: true
+  shell: >
+    docker run -d -p 5000:5000 --restart=always --name {{ registry_container_name }}
+    -v /etc/dockerauth:/auth
+    -v /data/docker-registry:/var/lib/registry
+    -e "REGISTRY_AUTH=htpasswd"
+    -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
+    -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+    registry:2

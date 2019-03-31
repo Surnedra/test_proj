@@ -1,0 +1,6 @@
+---
+
+- hosts: registry
+  roles:
+    - role: provision
+      docker_images_dir: /data/docker
