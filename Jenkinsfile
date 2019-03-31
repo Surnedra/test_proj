@@ -26,6 +26,8 @@ stages{
         env.TIMESTAMP = getTimeStamp()
         env.APP_NAME= getEnvVar('APP_NAME')
         env.IMAGE_NAME = getEnvVar('IMAGE_NAME')
+        env.REGISTRY_USER = getEnvVar('REGISTRY_USER')
+        env.REGISTRY_PWD = getEnvVar('REGISTRY_PWD')
         env.PROJECT_NAME=getEnvVar('PROJECT_NAME')
         env.DOCKER_REGISTRY_URL=getEnvVar('DOCKER_REGISTRY_URL')
         env.RELEASE_TAG = getEnvVar('RELEASE_TAG')
