@@ -64,4 +64,5 @@ stages{
             docker push ${DOCKER_REGISTRY_URL}/${IMAGE_NAME}:${BUILD_NUMBER}
             '''   
     }
+  }
 }
