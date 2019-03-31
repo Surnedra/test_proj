@@ -47,11 +47,11 @@ stages{
             sh '''
             echo "Setting up Docker registry using ansible playbook"
             cd docker_registry
-            echo "${REGISTRY_USER}"
-            echo "${REGISTRY_PWD}"
-            echo "${BUILD_NUMBER}
-            echo "${IMAGE_NAME}"
-            echo "${DOCKER_REGISTRY_URL}"
+            echo "${env.REGISTRY_USER}"
+            echo "${env.REGISTRY_PWD}"
+            echo "${env.BUILD_NUMBER}"
+            echo "${env.IMAGE_NAME}"
+            echo "${env.DOCKER_REGISTRY_URL}"
             #docker run --entrypoint htpasswd registry:2 -Bbn ${REGISTRY_USER} ${REGISTRY_PWD} > roles/provision/files/htpasswd
             #ansible-playbook -i hosts provision.yml -u ${REGISTRY_USER} --connection=local
             #ansible-playbook -i hosts deploy.yml -u ${REGISTRY_USER} --connection=local
