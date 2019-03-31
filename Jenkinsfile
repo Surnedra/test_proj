@@ -44,9 +44,13 @@ stages{
 
     stage('Setup Docker Registry'){
         steps{
-            sh '''
+            dir('workdir') {
+                sh '''
             echo "Setting up Docker registry using ansible playbook"
+            ls -l 
             '''
+            }
+            
         }
       }
     }
