@@ -49,7 +49,7 @@ stages{
             cd docker_registry
             #echo "${env.REGISTRY_USER}"
             #echo "${env.REGISTRY_PWD}"
-            echo "${env.BUILD_NUMBER}"
+            #echo "${env.BUILD_NUMBER}"
             echo "${env.IMAGE_NAME}"
             echo "${env.DOCKER_REGISTRY_URL}"
             #docker run --entrypoint htpasswd registry:2 -Bbn ${REGISTRY_USER} ${REGISTRY_PWD} > roles/provision/files/htpasswd
