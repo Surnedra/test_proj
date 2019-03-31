@@ -47,8 +47,8 @@ stages{
             sh '''
             echo "Setting up Docker registry using ansible playbook"
             cd docker_registry
-            echo "${env.REGISTRY_USER}"
-            echo "${env.REGISTRY_PWD}"
+            #echo "${env.REGISTRY_USER}"
+            #echo "${env.REGISTRY_PWD}"
             echo "${env.BUILD_NUMBER}"
             echo "${env.IMAGE_NAME}"
             echo "${env.DOCKER_REGISTRY_URL}"
