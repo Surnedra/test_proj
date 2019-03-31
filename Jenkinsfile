@@ -23,7 +23,6 @@ stages{
         script{
         env.BASE_DIR = pwd()
         env.CURRENT_BRANCH = env.BRANCH_NAME
-        env.IMAGE_TAG = getImageTag(env.CURRENT_BRANCH)
         env.TIMESTAMP = getTimeStamp()
         env.APP_NAME= getEnvVar('APP_NAME')
         env.IMAGE_NAME = getEnvVar('IMAGE_NAME')
@@ -47,7 +46,6 @@ stages{
         steps{
             sh '''
             echo "Setting up Docker registry using ansible playbook"
-            ls -l ${env.WORKDIR}
             '''
         }
       }
