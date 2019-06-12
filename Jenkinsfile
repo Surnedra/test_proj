@@ -38,7 +38,6 @@ stages{
         env.AWS_PROJECT_ID = getEnvVar('AWS_PROJECT_ID')
         env.AWS_K8S_CLUSTER_NAME = getEnvVar('AWS_K8S_CLUSTER_NAME')
         env.JENKINS_AWS_CRED_LOCATION = getEnvVar('JENKINS_AWS_CRED_LOCATION')
-
         }
 
         }
@@ -46,8 +45,8 @@ stages{
 
     stage('Setup Docker Registry'){
         steps{
-            echo ${BRANCHNAME}
             sh '''
+            echo ${CURRENT_BRANCH}
             echo "Setting up Docker registry using ansible playbook"
             #cd docker_registry
             #whoami
