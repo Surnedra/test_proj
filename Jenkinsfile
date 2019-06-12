@@ -45,6 +45,7 @@ stages{
 
     stage('Setup Docker Registry'){
         steps{
+          echo "cdddddddddddddddddddddddddddddddddddddddd"
           if (env.BRANCH_NAME == "surendra") {
             sh '''
             echo ${CURRENT_BRANCH}
