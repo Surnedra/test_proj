@@ -47,7 +47,7 @@ stages{
         steps{
           script { 
             echo "cdddddddddddddddddddddddddddddddddddddddd"
-            if (env.CURRENT_BRANCH == "surendra") {
+            if (env.CURRENT_BRANCH == "master") {
               sh '''
               echo ${CURRENT_BRANCH}
               echo "Setting up Docker registry using ansible playbook"
