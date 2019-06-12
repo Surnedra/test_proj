@@ -45,6 +45,7 @@ stages{
 
     stage('Setup Docker Registry'){
         steps{
+          if (env.BRANCH_NAME == "surendra") {
             sh '''
             echo ${CURRENT_BRANCH}
             echo "Setting up Docker registry using ansible playbook"
@@ -54,6 +55,7 @@ stages{
             #ansible-playbook -i hosts provision.yml -u $REGISTRY_USER --connection=local
             #ansible-playbook -i hosts deploy.yml -u $REGISTRY_USER --connection=local
             '''   
+         }
         }
       }
     stage('Build Docker images'){
